@@ -1,0 +1,73 @@
+﻿@model CatalogoDeFilmes.Models.Filme
+
+@{
+    ViewData["Title"] = "Editar Filme";
+}
+
+<h1>Editar Filme</h1>
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Titulo" class="form-label"></label>
+        <input asp-for="Titulo" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TituloOriginal" class="form-label"></label>
+        <input asp-for="TituloOriginal" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Sinopse" class="form-label"></label>
+        <textarea asp-for="Sinopse" class="form-control"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DataLancamento" class="form-label"></label>
+        <input asp-for="DataLancamento" type="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Genero" class="form-label"></label>
+        <input asp-for="Genero" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Lingua" class="form-label"></label>
+        <input asp-for="Lingua" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Duracao" class="form-label"></label>
+        <input asp-for="Duracao" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="NotaMedia" class="form-label"></label>
+        <input asp-for="NotaMedia" class="form-control" />
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Latitude" class="form-label"></label>
+            <input asp-for="Latitude" class="form-control" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label asp-for="Longitude" class="form-label"></label>
+            <input asp-for="Longitude" class="form-control" />
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CidadeReferencia" class="form-label"></label>
+        <input asp-for="CidadeReferencia" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

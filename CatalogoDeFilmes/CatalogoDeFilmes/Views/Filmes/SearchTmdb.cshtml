@@ -1,0 +1,55 @@
+﻿@model CatalogoDeFilmes.Models.TmdbSearchResponse
+
+@{
+    ViewData["Title"] = "Buscar no TMDb";
+    var query = ViewBag.Query as string ?? "";
+}
+
+<h1>Buscar Filmes no TMDb</h1>
+
+<form method="get" asp-action="SearchTmdb">
+    <div class="input-group mb-3">
+        <input type="text" name="query" value="@query" class="form-control" placeholder="Digite o nome do filme..." />
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+</form>
+
+@if (Model.Results?.Any() == true)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Lançamento</th>
+                <th>Nota</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var f in Model.Results)
+            {
+                <tr>
+                    <td>@f.Title</td>
+                    <td>@f.ReleaseDate</td>
+                    <td>@f.VoteAverage</td>
+                    <td>
+                        <a asp-action="ImportFromTmdb" asp-route-tmdbId="@f.Id" class="btn btn-sm btn-success">
+                            Importar
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <nav>
+        <ul class="pagination">
+            @for (int p = 1; p <= Model.TotalPages; p++)
+            {
+                <li class="page-item @(p == Model.Page ? "active" : "")">
+                    <a class="page-link" asp-action="SearchTmdb" asp-route-query="@query" asp-route-page="@p">@p</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

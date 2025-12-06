@@ -1,0 +1,39 @@
+﻿@model CatalogoDeFilmes.Controllers.FilmeDetalhesViewModel
+
+@{
+    ViewData["Title"] = "Detalhes do Filme";
+}
+
+<h1>@Model.Filme.Titulo</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        @if (!string.IsNullOrEmpty(Model.PosterUrl))
+        {
+            <img src="@Model.PosterUrl" class="img-fluid" alt="Poster" />
+        }
+    </div>
+    <div class="col-md-8">
+        <p><strong>Título original:</strong> @Model.Filme.TituloOriginal</p>
+        <p><strong>Sinopse:</strong> @Model.Filme.Sinopse</p>
+        <p><strong>Gênero:</strong> @Model.Filme.Genero</p>
+        <p><strong>Duração:</strong> @Model.Filme.Duracao min</p>
+        <p><strong>Nota média:</strong> @Model.Filme.NotaMedia</p>
+        <p><strong>Elenco principal:</strong> @Model.Filme.ElencoPrincipal</p>
+        <p><strong>Cidade de referência:</strong> @Model.Filme.CidadeReferencia</p>
+    </div>
+</div>
+
+<hr />
+
+@if (Model.Filme.Latitude.HasValue && Model.Filme.Longitude.HasValue)
+{
+    @await Html.PartialAsync("_WeatherBlock", Model.Weather)
+}
+else
+{
+    <div class="alert alert-warning">
+        Este filme não possui latitude/longitude cadastradas.
+        Edite o filme para informar as coordenadas e ver a previsão.
+    </div>
+}
