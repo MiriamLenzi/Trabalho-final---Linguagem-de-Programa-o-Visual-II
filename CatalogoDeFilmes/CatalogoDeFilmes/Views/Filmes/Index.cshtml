@@ -1,0 +1,24 @@
+﻿@model IEnumerable<CatalogoDeFilmes.Models.Filme>
+
+@{
+    ViewData["Title"] = "Catálogo de Filmes";
+}
+
+<h1>Catálogo de Filmes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Filme (Manual)</a>
+    <a asp-action="SearchTmdb" class="btn btn-secondary">Buscar no TMDb</a>
+    <a asp-action="ExportCsv" class="btn btn-outline-success">Exportar CSV</a>
+    <a asp-action="ExportExcel" class="btn btn-outline-success">Exportar Excel</a>
+</p>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+@foreach (var item in Model)
+{
+    @await Html.PartialAsync("_FilmeCard", item)
+}

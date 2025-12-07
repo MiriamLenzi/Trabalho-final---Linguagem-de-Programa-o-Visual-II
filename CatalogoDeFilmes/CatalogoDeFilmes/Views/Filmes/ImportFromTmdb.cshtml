@@ -1,0 +1,46 @@
+﻿@model CatalogoDeFilmes.Models.Filme
+
+@{
+    ViewData["Title"] = "Importar Filme do TMDb";
+}
+
+<h1>Completar dados e salvar</h1>
+
+<form asp-action="ImportFromTmdbConfirmed" method="post">
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.TmdbId)
+    @Html.HiddenFor(m => m.PosterPath)
+    @Html.HiddenFor(m => m.TituloOriginal)
+    @Html.HiddenFor(m => m.Sinopse)
+    @Html.HiddenFor(m => m.DataLancamento)
+    @Html.HiddenFor(m => m.Genero)
+    @Html.HiddenFor(m => m.Lingua)
+    @Html.HiddenFor(m => m.Duracao)
+    @Html.HiddenFor(m => m.NotaMedia)
+    @Html.HiddenFor(m => m.ElencoPrincipal)
+
+    <div class="mb-3">
+        <label asp-for="Titulo" class="form-label"></label>
+        <input asp-for="Titulo" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CidadeReferencia" class="form-label"></label>
+        <input asp-for="CidadeReferencia" class="form-control" />
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="Latitude" class="form-label"></label>
+            <input asp-for="Latitude" class="form-control" />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Longitude" class="form-label"></label>
+            <input asp-for="Longitude" class="form-control" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar no Catálogo</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
