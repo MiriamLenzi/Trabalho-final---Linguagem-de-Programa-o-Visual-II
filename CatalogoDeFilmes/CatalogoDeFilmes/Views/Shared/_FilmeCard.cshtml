@@ -1,0 +1,14 @@
+﻿@model CatalogoDeFilmes.Models.Filme
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Titulo (@Model.DataLancamento?.Year)</h5>
+        <p class="card-text">@Model.Genero</p>
+        <p class="card-text">
+            <small class="text-muted">Nota: @Model.NotaMedia ?? 0</small>
+        </p>
+        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Detalhes</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-secondary">Editar</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">Excluir</a>
+    </div>
+</div>
