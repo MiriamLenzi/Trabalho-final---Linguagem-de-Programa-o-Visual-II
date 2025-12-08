@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("eae65877-6842-4d2c-929a-c6688927c508")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CatalogoDeFilmes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+784fffd5fa49a5688c47af824eaa3b2844291147")]
 [assembly: System.Reflection.AssemblyProductAttribute("CatalogoDeFilmes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CatalogoDeFilmes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
