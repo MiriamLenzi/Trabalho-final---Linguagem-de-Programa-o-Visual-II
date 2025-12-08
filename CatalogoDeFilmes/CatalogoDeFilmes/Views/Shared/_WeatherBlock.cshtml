@@ -7,11 +7,11 @@
     var tMin = Model.Daily.TemperatureMin[0];
 
     <div class="alert alert-info">
-        <strong>Previsão para @date:</strong>
+        <strong>Previsão para @date.ToString("dd/MM/yyyy"):</strong>
         <br />
-        Mínima: @tMin @Model.DailyUnits.TemperatureMin
+        Mínima: @tMin @Model.DailyUnits?.TemperatureMin
         <br />
-        Máxima: @tMax @Model.DailyUnits.TemperatureMax
+        Máxima: @tMax @Model.DailyUnits?.TemperatureMax
     </div>
 }
 else
