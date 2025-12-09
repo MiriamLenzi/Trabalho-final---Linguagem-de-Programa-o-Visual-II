@@ -1,0 +1,48 @@
+﻿@model CatalogoDeFilmes.Models.Filme
+
+@{
+    ViewData["Title"] = "Excluir Filme";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1 class="text-danger">Excluir Filme</h1>
+        <hr />
+
+        <div class="alert alert-danger">
+            <h4 class="alert-heading"><i class="bi bi-exclamation-triangle"></i> Atenção!</h4>
+            <p>Tem certeza que deseja excluir o filme <strong>"@Model.Titulo"</strong>?</p>
+            <hr>
+            <p class="mb-0">Esta ação não pode ser desfeita.</p>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Titulo</h5>
+                @if (Model.DataLancamento.HasValue)
+                {
+                    <h6 class="card-subtitle mb-2 text-muted">Lançamento: @Model.DataLancamento.Value.ToString("dd/MM/yyyy")</h6>
+                }
+                @if (!string.IsNullOrEmpty(Model.Genero))
+                {
+                    <p class="card-text"><strong>Gênero:</strong> @Model.Genero</p>
+                }
+                @if (!string.IsNullOrEmpty(Model.Sinopse))
+                {
+                    <p class="card-text"><strong>Sinopse:</strong> @Model.Sinopse</p>
+                }
+            </div>
+        </div>
+
+        <form asp-action="Delete" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Id" />
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Confirmar Exclusão</button>
+                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-info"><i class="bi bi-eye"></i> Ver Detalhes</a>
+                <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-x-circle"></i> Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

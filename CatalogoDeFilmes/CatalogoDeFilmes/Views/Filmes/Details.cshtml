@@ -1,0 +1,138 @@
+﻿@model CatalogoDeFilmes.Controllers.FilmeDetalhesViewModel
+
+@{
+    ViewData["Title"] = "Detalhes do Filme";
+}
+
+<div class="row mb-3">
+    <div class="col">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a asp-action="Index">Catálogo</a></li>
+                <li class="breadcrumb-item active">@Model.Filme.Titulo</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        @if (!string.IsNullOrEmpty(Model.PosterUrl))
+        {
+            <img src="@Model.PosterUrl" class="img-fluid rounded shadow" alt="Poster de @Model.Filme.Titulo" />
+        }
+        else
+        {
+            <div class="card bg-light text-center p-5">
+                <i class="bi bi-film" style="font-size: 5rem; color: #ccc;"></i>
+                <p class="text-muted mt-3">Sem poster disponível</p>
+            </div>
+        }
+
+        <div class="d-grid gap-2 mt-3">
+            <a asp-action="Edit" asp-route-id="@Model.Filme.Id" class="btn btn-primary"><i class="bi bi-pencil"></i> Editar</a>
+            <a asp-action="Delete" asp-route-id="@Model.Filme.Id" class="btn btn-danger"><i class="bi bi-trash"></i> Excluir</a>
+            <a asp-action="Index" class="btn btn-secondary"><i class="bi bi-arrow-left"></i> Voltar</a>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <h1>@Model.Filme.Titulo</h1>
+        
+        @if (!string.IsNullOrEmpty(Model.Filme.TituloOriginal) && Model.Filme.TituloOriginal != Model.Filme.Titulo)
+        {
+            <h5 class="text-muted">@Model.Filme.TituloOriginal</h5>
+        }
+
+        @if (Model.Filme.DataLancamento.HasValue)
+        {
+            <p class="text-muted"><i class="bi bi-calendar"></i> @Model.Filme.DataLancamento.Value.ToString("dd/MM/yyyy") (@Model.Filme.DataLancamento.Value.Year)</p>
+        }
+
+        <div class="mb-3">
+            @if (!string.IsNullOrEmpty(Model.Filme.Genero))
+            {
+                foreach (var genero in Model.Filme.Genero.Split(',', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    <span class="badge bg-primary me-1">@genero.Trim()</span>
+                }
+            }
+            
+            @if (Model.Filme.Duracao.HasValue)
+            {
+                <span class="badge bg-secondary"><i class="bi bi-clock"></i> @Model.Filme.Duracao min</span>
+            }
+            
+            @if (Model.Filme.NotaMedia.HasValue)
+            {
+                <span class="badge bg-warning text-dark"><i class="bi bi-star-fill"></i> @Model.Filme.NotaMedia.Value.ToString("F1")/10</span>
+            }
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.Filme.Sinopse))
+        {
+            <h5>Sinopse</h5>
+            <p class="text-justify">@Model.Filme.Sinopse</p>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Filme.ElencoPrincipal))
+        {
+            <h5>Elenco Principal</h5>
+            <p>@Model.Filme.ElencoPrincipal</p>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Filme.Lingua))
+        {
+            <p><strong>Idioma:</strong> @Model.Filme.Lingua</p>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Filme.CidadeReferencia))
+        {
+            <p><strong>Cidade de Referência:</strong> <i class="bi bi-geo-alt"></i> @Model.Filme.CidadeReferencia</p>
+        }
+
+        @if (Model.TmdbDetails != null)
+        {
+            <div class="alert alert-info mt-3">
+                <small><i class="bi bi-info-circle"></i> Dados adicionais do TMDb (ID: @Model.Filme.TmdbId)</small>
+            </div>
+        }
+
+        <hr class="my-4" />
+
+        <h4>Previsão do Tempo</h4>
+        @if (Model.Filme.Latitude.HasValue && Model.Filme.Longitude.HasValue)
+        {
+            if (Model.Weather != null)
+            {
+                @await Html.PartialAsync("_WeatherBlock", Model.Weather)
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    Não foi possível obter a previsão do tempo para esta localização.
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-info">
+                <i class="bi bi-info-circle"></i>
+                Este filme não possui coordenadas cadastradas.
+                <a asp-action="Edit" asp-route-id="@Model.Filme.Id">Edite o filme</a> 
+                para informar a latitude e longitude e visualizar a previsão do tempo.
+            </div>
+        }
+
+        <hr class="my-4" />
+
+        <div class="text-muted small">
+            <p><strong>Cadastrado em:</strong> @Model.Filme.DataCriacao.ToString("dd/MM/yyyy HH:mm")</p>
+            @if (Model.Filme.DataAtualizacao.HasValue)
+            {
+                <p><strong>Última atualização:</strong> @Model.Filme.DataAtualizacao.Value.ToString("dd/MM/yyyy HH:mm")</p>
+            }
+        </div>
+    </div>
+</div>
