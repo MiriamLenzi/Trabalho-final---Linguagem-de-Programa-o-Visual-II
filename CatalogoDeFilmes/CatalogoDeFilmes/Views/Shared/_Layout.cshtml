@@ -1,47 +1,341 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - CatalogoDeFilmes</title>
-    <script type="importmap"></script>
+    <title>@ViewData["Title"] - Catálogo de Filmes</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/CatalogoDeFilmes.styles.css" asp-append-version="true"/>
+    <style>
+        /* CORREÇÕES CSS - TEMA ESCURO */
+        
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            flex: 1;
+        }
+
+        /* INPUTS E FORMULÁRIOS - TEXTO BRANCO VISÍVEL */
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="email"],
+        textarea,
+        select,
+        .form-control {
+            color: #ffffff !important;
+            background-color: #2d2d2d !important;
+            border: 1px solid #555 !important;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #999 !important;
+        }
+
+        .form-control:focus {
+            background-color: #3d3d3d !important;
+            border-color: #86b7fe !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+
+        .form-control:disabled,
+        .form-control[readonly] {
+            background-color: #1d1d1d !important;
+            color: #999 !important;
+        }
+
+        /* LABELS - BRANCO VISÍVEL */
+        label,
+        .form-label {
+            color: #ffffff !important;
+            font-weight: 500;
+        }
+
+        /* DATE PICKER - ÍCONE VISÍVEL */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+
+        /* FOOTER - SEMPRE NO RODAPÉ */
+        .footer {
+            position: relative !important;
+            margin-top: auto;
+            padding: 1.5rem 0;
+            background-color: #0d0d0d;
+        }
+
+        /* TEXTOS */
+        h1, h2, h3, h4, h5, h6,
+        p, span, div {
+            color: #ffffff;
+        }
+
+        small,
+        .form-text {
+            color: #adb5bd !important;
+        }
+
+        .text-muted {
+            color: #adb5bd !important;
+        }
+
+        /* ALERTAS - CONTRASTE ADEQUADO */
+        .alert-info {
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+            color: #0c5460 !important;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724 !important;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24 !important;
+        }
+
+        .alert-warning {
+            background-color: #fff3cd;
+            border-color: #ffeeba;
+            color: #856404 !important;
+        }
+
+        /* CARDS */
+        .card {
+            background-color: #2d2d2d;
+            border: 1px solid #444;
+        }
+
+        .card-title,
+        .card-text,
+        .card-subtitle {
+            color: #ffffff;
+        }
+
+        /* LINKS */
+        a {
+            color: #4dabf7;
+        }
+
+        a:hover {
+            color: #74c0fc;
+        }
+
+        /* BREADCRUMBS */
+        .breadcrumb {
+            background-color: #2d2d2d;
+        }
+
+        .breadcrumb-item a {
+            color: #4dabf7;
+        }
+
+        .breadcrumb-item.active {
+            color: #adb5bd;
+        }
+
+        /* TABELAS */
+        .table {
+            color: #ffffff;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.075);
+        }
+
+        .table-dark {
+            background-color: #212529;
+        }
+
+        /* DROPDOWN */
+        .dropdown-menu {
+            background-color: #2d2d2d;
+            border: 1px solid #444;
+        }
+
+        .dropdown-item {
+            color: #ffffff;
+        }
+
+        .dropdown-item:hover {
+            background-color: #3d3d3d;
+            color: #ffffff;
+        }
+
+        /* PAGINAÇÃO */
+        .pagination .page-link {
+            background-color: #2d2d2d;
+            border-color: #444;
+            color: #4dabf7;
+        }
+
+        .pagination .page-link:hover {
+            background-color: #3d3d3d;
+            border-color: #555;
+            color: #74c0fc;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .pagination .page-item.disabled .page-link {
+            background-color: #1d1d1d;
+            border-color: #333;
+            color: #666;
+        }
+
+        /* BADGES */
+        .badge {
+            color: #ffffff;
+        }
+
+        /* HR */
+        hr {
+            border-color: #444;
+            opacity: 0.5;
+        }
+
+        /* VALIDAÇÃO */
+        .text-danger {
+            color: #ff6b6b !important;
+        }
+
+        .is-invalid {
+            border-color: #dc3545 !important;
+        }
+
+        .invalid-feedback {
+            color: #ff6b6b !important;
+        }
+
+        /* BOTÕES - MELHOR CONTRASTE */
+        .btn-primary {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+
+        .btn-success {
+            background-color: #198754;
+            border-color: #198754;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-info {
+            background-color: #0dcaf0;
+            border-color: #0dcaf0;
+            color: #000000;
+        }
+    </style>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CatalogoDeFilmes</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" asp-area="" asp-controller="Filmes" asp-action="Index">
+                🎬 Catálogo de Filmes
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-white" asp-area="" asp-controller="Filmes" asp-action="Index">
+                            <i class="bi bi-house-door"></i> Início
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <a class="nav-link text-white" asp-area="" asp-controller="Filmes" asp-action="SearchTmdb">
+                            <i class="bi bi-search"></i> Buscar TMDb
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Filmes" asp-action="Create">
+                            <i class="bi bi-plus-circle"></i> Novo Filme
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-download"></i> Exportar
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" asp-area="" asp-controller="Filmes" asp-action="ExportCsv">
+                                    <i class="bi bi-file-earmark-spreadsheet"></i> Exportar CSV
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" asp-area="" asp-controller="Filmes" asp-action="ExportExcel">
+                                    <i class="bi bi-file-earmark-excel"></i> Exportar Excel
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 </header>
+
 <div class="container">
     <main role="main" class="pb-3">
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @TempData["Message"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                @TempData["Error"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+        
         @RenderBody()
     </main>
 </div>
 
 <footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2025 - CatalogoDeFilmes - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <div class="container text-center py-3">
+        &copy; @DateTime.Now.Year - Catálogo de Filmes - Desenvolvido com ASP.NET Core 9.0
     </div>
 </footer>
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
