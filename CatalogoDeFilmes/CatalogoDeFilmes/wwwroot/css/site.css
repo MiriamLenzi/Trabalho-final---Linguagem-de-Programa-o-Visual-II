@@ -1,31 +1,139 @@
-html {
-  font-size: 14px;
+/* ===========================
+   TEMA DARK - ESTILO NETFLIX
+   =========================== */
+
+:root {
+    --bg-main: #141414;
+    --bg-card: #181818;
+    --bg-card-hover: #222222;
+    --accent: #e50914;
+    --accent-soft: #f40612;
+    --text-main: #f5f5f5;
+    --text-muted: #b3b3b3;
+    --border-soft: #333333;
+    --radius-card: 10px;
+    --shadow-soft: 0 4px 12px rgba(0,0,0,0.6);
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+html, body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: "Segoe UI", system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/* dá uma respirada na área de conteúdo */
+.container {
+    padding-top: 24px;
+    padding-bottom: 32px;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+/* NAVBAR */
+.navbar {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(0,0,0,0.6));
+    border-bottom: 1px solid var(--border-soft);
 }
 
-body {
-  margin-bottom: 60px;
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--accent) !important;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.nav-link {
+    color: var(--text-muted) !important;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    .nav-link:hover {
+        color: var(--text-main) !important;
+    }
+
+/* TÍTULOS */
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-bottom: 1rem;
+}
+
+/* BOTÕES */
+.btn-primary {
+    background: var(--accent);
+    border-color: var(--accent-soft);
+    font-weight: 600;
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background: var(--accent-soft);
+        border-color: var(--accent);
+    }
+
+/* deixar o Editar visível, não transparente */
+.btn-secondary {
+    background: #444;
+    border-color: #666;
+    color: #fff;
+}
+
+    .btn-secondary:hover {
+        background: #666;
+        border-color: #888;
+    }
+
+/* CARDS GERAIS (lista de filmes, alerts com card etc.) */
+.card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-card);
+    border: 1px solid var(--border-soft);
+    color: var(--text-main);
+}
+
+    /* CARD ESPECÍFICO DE FILME (quando tiver a classe filme-card) */
+    .card.filme-card {
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+        .card.filme-card:hover {
+            transform: scale(1.03);
+            background-color: var(--bg-card-hover);
+        }
+
+/* GRID DE FILMES */
+.filme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* FORMULÁRIOS */
+.form-control {
+    background-color: #181818;
+    border: 1px solid var(--border-soft);
+    color: var(--text-main);
+}
+
+    .form-control:focus {
+        background-color: #181818;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 0.2rem rgba(229, 9, 20, 0.25);
+    }
+
+/* ALERTAS – mais claros sobre fundo escuro */
+.alert-info,
+.alert-warning {
+    color: var(--text-main);
+}
+
+.alert-info {
+    background-color: rgba(0, 123, 255, 0.18);
+    border-color: rgba(0, 123, 255, 0.7);
+}
+
+.alert-warning {
+    background-color: rgba(255, 193, 7, 0.18);
+    border-color: rgba(255, 193, 7, 0.7);
 }

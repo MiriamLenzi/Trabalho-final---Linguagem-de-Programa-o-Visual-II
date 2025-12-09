@@ -1,0 +1,22 @@
+﻿@model CatalogoDeFilmes.Models.WeatherForecastResponse
+
+@if (Model?.Daily?.Time?.Any() == true)
+{
+    var date = Model.Daily.Time[0];
+    var tMax = Model.Daily.TemperatureMax[0];
+    var tMin = Model.Daily.TemperatureMin[0];
+
+    <div class="alert alert-info">
+        <strong>Previsão para @date.ToString("dd/MM/yyyy"):</strong>
+        <br />
+        Mínima: @tMin @Model.DailyUnits?.TemperatureMin
+        <br />
+        Máxima: @tMax @Model.DailyUnits?.TemperatureMax
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        Não foi possível obter a previsão do tempo.
+    </div>
+}

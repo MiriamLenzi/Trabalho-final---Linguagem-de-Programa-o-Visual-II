@@ -20,6 +20,34 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/Filmes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/Filmes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/Filmes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/Filmes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/Filmes/ImportFromTmdb.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXEltcG9ydEZyb21UbWRiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/Filmes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/Filmes/SearchTmdb.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmlsbWVzXFNlYXJjaFRtZGIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,8 +60,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/Shared/_FilmeCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GaWxtZUNhcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/Shared/_WeatherBlock.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9XZWF0aGVyQmxvY2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ilziv/OneDrive/Documentos/GitHub/Trabalho-final---Linguagem-de-Programa-o-Visual-II/CatalogoDeFilmes/CatalogoDeFilmes/Views/_ViewImports.cshtml]

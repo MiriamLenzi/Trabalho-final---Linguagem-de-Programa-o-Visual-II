@@ -1,0 +1,42 @@
+﻿@model CatalogoDeFilmes.Models.Filme
+
+<div class="card h-100 shadow-sm">
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title">@Model.Titulo</h5>
+        @if (Model.DataLancamento.HasValue)
+        {
+            <h6 class="card-subtitle mb-2 text-muted">(@Model.DataLancamento.Value.Year)</h6>
+        }
+        
+        @if (!string.IsNullOrEmpty(Model.Genero))
+        {
+            <p class="card-text"><small><strong>Gênero:</strong> @Model.Genero</small></p>
+        }
+        
+        @if (Model.NotaMedia.HasValue)
+        {
+            <p class="card-text">
+                <small class="text-warning">
+                    ⭐ Nota: @Model.NotaMedia.Value.ToString("F1")/10
+                </small>
+            </p>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.CidadeReferencia))
+        {
+            <p class="card-text">
+                <small class="text-muted">
+                    📍 @Model.CidadeReferencia
+                </small>
+            </p>
+        }
+
+        <div class="mt-auto">
+            <div class="btn-group w-100" role="group">
+                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Detalhes</a>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-secondary">Editar</a>
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">Excluir</a>
+            </div>
+        </div>
+    </div>
+</div>

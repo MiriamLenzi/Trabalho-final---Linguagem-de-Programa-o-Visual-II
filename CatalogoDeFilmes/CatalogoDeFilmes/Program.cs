@@ -1,29 +1,42 @@
+using CatalogoDeFilmes.Models;
+using CatalogoDeFilmes.Repositories;
+using CatalogoDeFilmes.Services;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// MVC
 builder.Services.AddControllersWithViews();
+
+// Cache
+builder.Services.AddMemoryCache();
+
+// Config TMDb (usa user-secrets, não commitar)
+builder.Services.Configure<TmdbOptions>(builder.Configuration.GetSection("Tmdb"));
+
+// HttpClients
+builder.Services.AddHttpClient<ITmdbApiService, TmdbApiService>();
+builder.Services.AddHttpClient<IWeatherApiService, WeatherApiService>();
+
+// Repositório (SQLite simples, sem migrations)
+builder.Services.AddSingleton<IFilmeRepository, FilmeRepository>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Pipeline padrão
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
-
 app.UseAuthorization();
 
-app.MapStaticAssets();
-
 app.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-
+    name: "default",
+    pattern: "{controller=Filmes}/{action=Index}/{id?}");
 
 app.Run();
